@@ -3,11 +3,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import ServerIcon from './ServerIcon';
-import { ChevronDoubleDownIcon, PlusIcon, ChevronDownIcon, MicrophoneIcon, PhoneIcon, CogIcon, VideoCameraIcon } from '@heroicons/react/outline';
+import { ChevronDoubleDownIcon, PlusIcon, ChevronDownIcon, MicrophoneIcon, PhoneIcon, CogIcon,VideoCameraIcon } from '@heroicons/react/outline';
 import Channel from "../components/Channel";
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Chat from './Chat';
+import { useState } from "react";
+import { IconButton } from '@material-ui/core';
+import VideoCall from '../VideoCallComponents/videoCall';
+import { useHistory } from 'react-router-dom';
 function Home() {
+    const history = useHistory();
+    const [inCall, setInCall] = useState(false);
     const [user] = useAuthState(auth);
     const [channels] = useCollection(db.collection("channels"));
     const handleAddChannel = () => {
@@ -19,6 +25,10 @@ function Home() {
             });
         }
     };
+    const handleClick = () => {
+        console.log('IconButton clicked');
+        history.push('/video-call'); // Navigate to video call page
+      };
     return (
         <>
             {!user && <Redirect to="/" />}
@@ -112,8 +122,13 @@ function Home() {
                             <div className=" microphone">
                             <CogIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
                             </div>
-                            <div className="microphone">
-                                <VideoCameraIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }}/>
+                            <div className="microphone" style={{ height: "100%" }}>
+                                <IconButton
+                                    onClick={handleClick}
+                                    style={{ height: '100%', color: 'white' }}
+                                >
+                                    <VideoCameraIcon style={{ height: '1.25rem' }} />
+                                </IconButton>
                             </div>
                         </div>
                     </div>
