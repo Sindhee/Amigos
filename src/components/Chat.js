@@ -9,6 +9,11 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import { EmojiHappyIcon, GiftIcon, PlusCircleIcon } from '@heroicons/react/outline';
 import firebase from 'firebase';
 import Message from './Message';
+import Resource from './Resource'
+import { Link } from 'react-router-dom';
+import { AuthDisplay } from './AuthDisplay';
+import FileUpload from './FileUpload';
+import Dummy from './Dummy'
 
 function Chat() {
     const channelId = useSelector(selectChannelId);
@@ -47,6 +52,7 @@ function Chat() {
         inputRef.current.value = "";
         scrollToBottom();
     };
+   
 
     return (
         <div style={{
@@ -58,9 +64,9 @@ function Chat() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                gap: '1.25rem',  // Adjust as needed
-                borderBottom: '1px solid #2d2f33',  // Use the appropriate color
-                padding: '1rem 2rem',  // Adjust as needed
+                gap: '1.25rem',  
+                borderBottom: '1px solid #2d2f33', 
+                padding: '1rem 2rem', 
                 marginTop: '-1px',
             }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
@@ -78,11 +84,16 @@ function Chat() {
                 }}
                 >
                     <div className="land_part1" >
-                        <button style={{ height: '1.79rem', marginRight: "2.5rem" }} > SUBTITLE</button>
+                         <button style={{height: '2rem',width: '5.5rem', borderRadius: '99px', backgroundColor: 'grey',cursor: 'pointer',color:'white'}}>
+                         <Link to="/resource">Resources</Link></button>
+                       
                     </div>
                     <BellIcon className="icon" />
                     <ChatIcon className="icon" />
+                    <Link to="/AuthDisplay">
                     <UsersIcon className="icon" />
+                    </Link>
+                    
                     <div style={{
                         display: 'flex',
                         '--tw-bg-opacity': 1,
@@ -146,7 +157,8 @@ function Chat() {
                 <div ref={chatRef} className="pb-16" />
             </main>
             <div className=" main_div " >
-                <PlusCircleIcon className='icon ' style={{ marginRight: 'auto' }} />
+                <FileUpload/>
+
                 <form style={{ flexGrow: '1' }}>
                     <input
                         type="text"
@@ -154,10 +166,11 @@ function Chat() {
                         placeholder={
                             channelId ? `Message #${channelName}` : "Select a channel"
                         }
-                        className="writing_chat  "
+                        className="writing_chat"
                         ref={inputRef}
                     />
-                    <button hidden type="submit" onClick={sendMessage}>
+                    
+                    <button hidden type="submit" onClick={sendMessage} >
                         Send
                     </button>
 

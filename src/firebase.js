@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import 'firebase/auth'
 const firebaseConfig = {
     apiKey: "AIzaSyCJ3A8AOipqmGnPgSvVSAIyWy7DihI8x0Q",
     authDomain: "amigos-1d969.firebaseapp.com",

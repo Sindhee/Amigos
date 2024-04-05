@@ -10,7 +10,7 @@ function Hero() {
           <h2 className=" land_h2  lg:max-w-3xl w-full">
             Whether you’re part of a school club, gaming group, worldwide art
             community, or just a handful of friends that want to spend time
-            together, Discord makes it easy to talk every day and hang out more
+            together, Amigos makes it easy to talk every day and hang out more
             often.
           </h2>
           <div className="land_part1 flex flex-col sm:flex-row md:flex-col lg:flex-row md:items-start sm:items-center gap-6">
@@ -19,7 +19,7 @@ function Hero() {
                  Download for Mac
             </button>
             <button className="land_button1 rounded-full p-4 text-lg hover:shadow-2xl hover:bg-gray-800 focus:outline-none transition duration-200 ease-in-out">
-             Open Discord in your browser
+             Open Amigos in your browser
             </button>
         </div>
         </div>

@@ -4,8 +4,8 @@ import {  Switch, Route } from "react-router-dom";
 import { BrowserRouter as Router } from 'react-router-dom';
 import Hero from "./components/Hero";
 import Home from "./components/Home"
-// import { Switch, Route } from 'react-router-dom';
-// import { Routes ,Route } from 'react-router-dom';
+import Resource from "./components/Resource";
+import { AuthDisplay } from "./components/AuthDisplay";
 function App() {
   return ( 
   <Router>
@@ -20,6 +20,8 @@ function App() {
       <Route exact path="/channels/:id">
         <Home />
       </Route> 
+      <Route path="/resource" component={Resource}/>
+      <Route path="/AuthDisplay" component={AuthDisplay}/>
     </Switch>
   </Router>
   );
