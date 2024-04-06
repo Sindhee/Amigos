@@ -116,6 +116,7 @@ function Home() {
 
 
                         </div>
+                        
                         <button onClick={handleSignOut} style={{height: '2rem',width:'4.5rem',borderRadius: '99px',backgroundColor:'grey',cursor: 'pointer',marginLeft: '0.5rem',color:"white"}}>Signout</button> {showSignOutPopup && (
                             <div className="sign-out-popup">
                                 <p>Are you sure you want to sign out?</p>

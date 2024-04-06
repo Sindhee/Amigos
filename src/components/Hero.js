@@ -8,10 +8,7 @@ function Hero() {
         <div className=" landing3  md:max-w-md lg:max-w-none    lg:justify-center ">
           <h1 className=" land_h1 ">Your place to talk</h1>
           <h2 className=" land_h2  lg:max-w-3xl w-full">
-            Whether you’re part of a school club, gaming group, worldwide art
-            community, or just a handful of friends that want to spend time
-            together, Amigos makes it easy to talk every day and hang out more
-            often.
+          Welcome to Amigos, an educational platform designed to foster collaboration and communication within educational communities. By using our platform, you agree to abide by the following terms:
           </h2>
           <div className="land_part1 flex flex-col sm:flex-row md:flex-col lg:flex-row md:items-start sm:items-center gap-6">
              <button className="land_button1 items-center justify-center rounded-full p-4 text-lg hover:shadow-2xl hover:text-discord_blurple focus:outline-none transition duration-200 ease-in-out">
