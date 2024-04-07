@@ -89,7 +89,7 @@ function Chat() {
                        
                     </div>
                     <a href="https://colab.research.google.com/drive/1Hvr3K9dy8whfGWqgEJtSIfhgf12XNSVz?usp=sharing#scrollTo=MRB4prIxFQvD"><button style={{height: '2rem',width:'4.5rem',borderRadius: '99px',backgroundColor:'grey',cursor: 'pointer',marginLeft: '0.5rem',color:"white"}}>Subtitle</button></a>
-                    <a href="https://calendar.google.com/calendar/u/0/r?pli=1"><button style={{height: '2rem',width:'4.5rem',borderRadius: '99px',backgroundColor:'grey',cursor: 'pointer',marginLeft: '0.5rem',color:"white"}}>Subtitle</button></a>
+                    <a href="https://calendar.google.com/calendar/u/0/r?pli=1"><button style={{height: '2rem',width:'4.5rem',borderRadius: '99px',backgroundColor:'grey',cursor: 'pointer',marginLeft: '0.5rem',color:"white"}}>Scheduler</button></a>
                     <BellIcon className="icon" />
                     <ChatIcon className="icon" />
                     <Link to="/AuthDisplay">
