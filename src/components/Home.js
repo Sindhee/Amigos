@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
@@ -25,10 +25,12 @@ function Home() {
             });
         }
     };
+
     const handleClick = () => {
         console.log('IconButton clicked');
         history.push('/video-call'); // Navigate to video call page
       };
+
     return (
         <>
             {!user && <Redirect to="/" />}
@@ -68,15 +70,14 @@ function Home() {
                                 onClick={handleAddChannel}
                             />
                         </div>
-                        <div className=" space-y-2 px-2 " style={{
-                            display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '0.5rem',
-                            paddingRight: '0.5rem', marginBottom: '1rem'
-                        }}>
+                        <div className=" space-y-2 px-2 " style={{display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingLeft: '0.5rem',
+                            paddingRight: '0.5rem', marginBottom: '1rem'}}>
                             {channels?.docs.map((doc) => (
                                 <Channel
                                     key={doc.id}
                                     id={doc.id}
                                     channelName={doc.data().channelName}
+                                    
                                 />
                             ))}
                         </div>
@@ -103,7 +104,7 @@ function Home() {
                                     height: '2.5rem', /* 40px */
                                     borderRadius: '9999px',
                                 }}
-                                onClick={() => auth.signOut()}
+
                             />
                             <h4 style={{ color: 'white', fontSize: '0.75rem', fontWeight: '500' }}>
                                 {user?.displayName}{" "}
@@ -111,31 +112,31 @@ function Home() {
                                     #{user?.uid.substring(0, 4)}
                                 </span>
                             </h4>
+
+
                         </div>
-                         <div style={{ color: 'rgba(163, 163, 163, 1)', display: 'flex', alignItems: 'center' }}>
-                            <div className=" microphone">
-                                <MicrophoneIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
+                        
+                        <button onClick={handleSignOut} style={{height: '2rem',width:'4.5rem',borderRadius: '99px',backgroundColor:'grey',cursor: 'pointer',marginLeft: '0.5rem',color:"white"}}>Signout</button> {showSignOutPopup && (
+                            <div className="sign-out-popup">
+                                <p>Are you sure you want to sign out?</p>
+                                <button onClick={confirmSignOut}>Sign Out</button>
+                                <button onClick={cancelSignOut}>Cancel</button>
                             </div>
-                            <div className=" microphone">
-                            <PhoneIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
-                            </div>
-                            <div className=" microphone">
-                            <CogIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
-                            </div>
-                            <div className="microphone" style={{ height: "100%" }}>
-                                <IconButton
-                                    onClick={handleClick}
-                                    style={{ height: '100%', color: 'white' }}
-                                >
-                                    <VideoCameraIcon style={{ height: '1.25rem' }} />
-                                </IconButton>
+
+                        )}
+                        <div style={{ color: 'rgba(163, 163, 163, 1)', display: 'flex', alignItems: 'center' }}>
+                           
+
+                            <div className="microphone">
+                                <VideoCameraIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
+
                             </div>
                         </div>
                     </div>
                 </div>
-                    <div style={{ backgroundColor: '#36393f', flexGrow: 1 }}>
-                        <Chat />
-                    </div>
+                <div style={{ backgroundColor: '#36393f', flexGrow: 1 }}>
+                    <Chat />
+                </div>
             </div>
 
         </>

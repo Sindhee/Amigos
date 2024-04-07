@@ -6,8 +6,8 @@ import {  Switch, Route } from "react-router-dom";
 import { BrowserRouter as Router } from 'react-router-dom';
 import Hero from "./components/Hero";
 import Home from "./components/Home"
-// import { Switch, Route } from 'react-router-dom';
-// import { Routes ,Route } from 'react-router-dom';
+import Resource from "./components/Resource";
+import { AuthDisplay } from "./components/AuthDisplay";
 function App() {
   const [inCall, setInCall] = useState(false);
   return ( 
@@ -26,6 +26,8 @@ function App() {
       <Route exact path="/video-call"> {/* Define route for video call page */}
           <VideoCallPage inCall={inCall} setInCall={setInCall} />
       </Route> 
+      <Route path="/resource" component={Resource}/>
+      <Route path="/AuthDisplay" component={AuthDisplay}/>
     </Switch>
   </Router>
   );

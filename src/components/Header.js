@@ -25,11 +25,14 @@ function Header() {
           alt=""
           height="90px"
           width="100px"
+          color="white"
           align="left"
           ></img>
       <div className="hidden lg:flex space-x-1">
+
       <a className="link" style={{ marginRight: '1rem', color: 'white' }}>Welcome</a>
       {/* <a className="link" style={{ marginRight: '2rem', color: 'white' }}>Why Discord?</a>
+
       <a className="link" style={{ marginRight: '1.5rem', color: 'white' }}>Nitro</a>
       <a className="link" style={{ marginRight: '1rem', color: 'white' }}>Safety</a>
       <a className="link" style={{ color: 'white' }}>Support</a> */}
@@ -48,15 +51,12 @@ function Header() {
             {!user ? "Login" : "Login/Signup"}
         </button>
 
+
        {/* <MenuIcon className="height:20px  width: 20px  margin-left: 1250px text-white cursor-pointer lg:hidden" /> */}
        {/* <MenuIcon style={{       
-        height: '20px',         
-        width: '20px',          
-        marginLeft: '2rem',      
-        color: 'white',         
-        cursor: 'pointer',      
-      }}                       
+
       />                       */}
+
       </div>
     </header>
   );
