@@ -3,11 +3,17 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../firebase';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import ServerIcon from './ServerIcon';
-import { ChevronDoubleDownIcon, PlusIcon, ChevronDownIcon, MicrophoneIcon, PhoneIcon, CogIcon, VideoCameraIcon } from '@heroicons/react/outline';
+import { ChevronDoubleDownIcon, PlusIcon, ChevronDownIcon, MicrophoneIcon, PhoneIcon, CogIcon,VideoCameraIcon } from '@heroicons/react/outline';
 import Channel from "../components/Channel";
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Chat from './Chat';
+import { useState } from "react";
+import { IconButton } from '@material-ui/core';
+import VideoCall from '../VideoCallComponents/videoCall';
+import { useHistory } from 'react-router-dom';
 function Home() {
+    const history = useHistory();
+    const [inCall, setInCall] = useState(false);
     const [user] = useAuthState(auth);
     const [channels] = useCollection(db.collection("channels"));
     const handleAddChannel = () => {
@@ -19,18 +25,11 @@ function Home() {
             });
         }
     };
-    const [showSignOutPopup, setShowSignOutPopup] = useState(false);
-    const handleSignOut = () => {
-        setShowSignOutPopup(true);
-    };
-    const confirmSignOut = () => {
-        auth.signOut();
-        setShowSignOutPopup(false);
-    };
 
-    const cancelSignOut = () => {
-        setShowSignOutPopup(false);
-    };
+    const handleClick = () => {
+        console.log('IconButton clicked');
+        history.push('/video-call'); // Navigate to video call page
+      };
 
     return (
         <>
@@ -123,12 +122,14 @@ function Home() {
                                 <button onClick={confirmSignOut}>Sign Out</button>
                                 <button onClick={cancelSignOut}>Cancel</button>
                             </div>
+
                         )}
                         <div style={{ color: 'rgba(163, 163, 163, 1)', display: 'flex', alignItems: 'center' }}>
                            
 
                             <div className="microphone">
                                 <VideoCameraIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
+
                             </div>
                         </div>
                     </div>
