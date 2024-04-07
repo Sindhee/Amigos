@@ -7,7 +7,6 @@ import { ChevronDoubleDownIcon, PlusIcon, ChevronDownIcon, MicrophoneIcon, Phone
 import Channel from "../components/Channel";
 import { useCollection } from 'react-firebase-hooks/firestore';
 import Chat from './Chat';
-import { useState } from "react";
 import { IconButton } from '@material-ui/core';
 import VideoCall from '../VideoCallComponents/videoCall';
 import { useHistory } from 'react-router-dom';
@@ -29,6 +28,20 @@ function Home() {
     const handleClick = () => {
         console.log('IconButton clicked');
         history.push('/video-call'); // Navigate to video call page
+      };
+
+
+      const [showSignOutPopup, setShowSignOutPopup] = useState(false);
+      const handleSignOut = () => {
+          setShowSignOutPopup(true);
+      };
+      const confirmSignOut = () => {
+          auth.signOut();
+          setShowSignOutPopup(false);
+      };
+  
+      const cancelSignOut = () => {
+          setShowSignOutPopup(false);
       };
 
     return (
@@ -127,8 +140,16 @@ function Home() {
                         <div style={{ color: 'rgba(163, 163, 163, 1)', display: 'flex', alignItems: 'center' }}>
                            
 
-                            <div className="microphone">
-                                <VideoCameraIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
+                            <div className="microphone" style={{height: "100%"}}>
+                                <IconButton
+                                    onClick={handleClick}
+                                    style={{height: '100%' , color: 'white'}}
+                                >
+                                    <VideoCameraIcon className=" icon" style={{ height: '1.25rem ', color: 'white' }} />
+
+
+                                </IconButton>
+                                
 
                             </div>
                         </div>
